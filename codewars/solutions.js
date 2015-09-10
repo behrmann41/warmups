@@ -42,3 +42,19 @@ function tea42(input) {
   var myString = input.toString();
   return myString.replace(/2/g,'t');
 };
+
+// Write a function called appendArrays that appends the items from array 2 onto array 1, 
+// returning the newly formed array
+
+function appendArrays (arr1,arr2) {
+  var output = [];
+  for (var i = 0; i < arr1.length; i++){
+    output.push(arr1[i]);
+  }
+  for (var j = 0; j < arr2.length; j++){
+      output.push(arr2[j]);
+    }
+  return output;
+}
+
+console.log(appendArrays([1,2], [2,4]))
