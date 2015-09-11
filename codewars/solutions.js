@@ -57,4 +57,68 @@ function appendArrays (arr1,arr2) {
   return output;
 }
 
+//refactored
+
+function appendArrays (arr1, arr2) {
+  return [].concat( arr1, arr2 )
+}
+
 console.log(appendArrays([1,2], [2,4]))
+
+//number of rectangles in a MxN Matrix:
+function numberOfRectangles(m, n) {
+    var sumM = 0;
+    var sumN = 0;
+    for (var i = 1; i <=m; i++){
+        sumM += i;
+    }
+    for (var j = 1; j <=n; j++){
+        sumN += j;
+    }
+    return sumM * sumN;
+}
+//refactored:
+
+function numberOfRectangles(m, n) {
+  return (m * (m + 1) * n * (n + 1)) / 4;
+}
+
+// number of Xs vs number of Os (case insensitive)
+
+function XO(str) {
+    var count = 0;
+    for(var i in str){
+      if (str[i] == 'x' || str[i] == 'X'){
+       count ++;
+      } else if (str[i] == 'o' || str[i] == 'O'){
+       count --;
+      }
+      if (count < 0) return false;
+      else if (count == 0) return true
+    }
+    if (count > 0) return false
+    return true;
+} 
+
+//refactored:
+
+function XO(str) {
+    var a = str.replace(/x/gi, ''),
+        b = str.replace(/o/gi, '');
+    return a.length === b.length;
+}
+
+//print pattern ex: if n = 4 1\n22\n333\n4444
+
+function pattern(n){
+ var output='';
+ var counter = 0;
+ while (counter < n){
+     counter++;
+     for (var i = 1; i <= counter; i++){
+         output += counter;
+     }
+     output += '\n';
+ }
+ return output.trim();
+}
