@@ -89,33 +89,66 @@
 
 // recursively write the collatz sequence:
 //Sky's solution:
-function collatzSequence(num){
-  var output = '';
-  function go(num){
-    if(num === 1) return 1;
-    output += num + '->';
-    return num % 2 === 0 ? go(num/2) : go(num*3+1);
-  }
-  go(num);
-  return output.slice(0,-2);
+// function collatzSequence(num){
+//   var output = '';
+//   function go(num){
+//     if(num === 1) return 1;
+//     output += num + '->';
+//     return num % 2 === 0 ? go(num/2) : go(num*3+1);
+//   }
+//   go(num);
+//   return output.slice(0,-2);
+// }
+// console.log(collatzSequence(13));
+// console.log(collatzSequence(252));
+
+// // David Yokum's solution
+// function collatz (n) {
+//   if (n === 1) return 1;
+//   return n + " -> " + collatz(n % 2 === 0 ? n/2 : 3*n +1)
+// }
+
+// // Lisa's solutoin
+// function collatzSequence(number) {
+//   var param;
+//   if (number == 1) {
+//     return 1;
+//   }
+//   number % 2 == 0 ? param = number/2 : param = (number*3)+1;
+//   return number + ' -> ' + collatzSequence(param);
+// }
+
+//Write a function parensChecker which takes a single string arguement consisting of a bunch of parentheses. 
+//The function should return true if the string is a valid parentheses expression. For example:
+// solution using reduce  
+  // function parensChecker (string) {
+  //   var output = string.split('');
+  //   var parens = output.reduce(function(prev, curr) {
+  //     if (prev >= 0) {
+  //       if (curr == '(') {
+  //         prev +=1;
+  //       } else prev -=1;
+  //       return prev;
+  //     }
+  //     return prev;
+  //   }, 0);
+  //   return parens === 0;
+  // }
+//solution using iteration
+  function parensChecker(string){
+    var depth = 0;
+    for(var i in string){
+        if(string[i] == '('){
+            depth ++;
+        } else if(string[i] == ')') {
+            depth --;
+        }
+        if (depth < 0) return false;
+    }
+    if(depth > 0) return false;
+    return true;
 }
-console.log(collatzSequence(13));
-console.log(collatzSequence(252));
 
-// David Yokum's solution
-function collatz (n) {
-  if (n === 1) return 1;
-  return n + " -> " + collatz(n % 2 === 0 ? n/2 : 3*n +1)
-}
-
-// Lisa's solutoin
-function collatzSequence(number) {
-  var param;
-  if (number == 1) {
-    return 1;
-  }
-  number % 2 == 0 ? param = number/2 : param = (number*3)+1;
-  return number + ' -> ' + collatzSequence(param);
-}
-
-
+  console.log("true ->  " + parensChecker("()(((())))")) //=> true
+  console.log("false -> " + parensChecker("())))(")) //=> false
+  console.log("false -> " + parensChecker(")(")) //=> false
