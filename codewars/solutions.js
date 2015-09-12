@@ -122,3 +122,39 @@ function pattern(n){
  }
  return output.trim();
 }
+
+// create a phone number out of an array of numbers:
+
+function createPhoneNumber(numbers){
+  var numArr = numbers;
+  var output = '';
+  output += "(";
+  for (var i = 0; i < 3; i++){
+    output += numArr[i];
+  }
+  for (var x = 0; x < 3; x++){
+    numArr.shift();
+  }
+  output += ') '
+  for (var j = 0; j < 3; j++){
+    output += numArr[j];
+  }
+  for (var y = 0; y < 3; y++){
+      numArr.shift();
+  }
+  output += '-';
+  for (var k = 0; k < 4; k++){
+      output += numArr[k]
+  }
+  return output;
+}
+
+//refactored
+
+function createPhoneNumber(numbers){
+  var phone = numbers.join("");
+  return "(" + phone.substr(0, 3) + ") "
+       + phone.substr(3, 3)
+       + "-"
+       + phone.substr(6, 4);
+}
