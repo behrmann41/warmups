@@ -158,3 +158,31 @@ function createPhoneNumber(numbers){
        + "-"
        + phone.substr(6, 4);
 }
+
+// adding correct suffix to any input number:
+
+function numberToOrdinal(n) {
+    var i = n % 10,
+        j = n % 100;
+    if (i == 1 && j != 11) {
+        return n + "st";
+    } else if (i == 2 && j != 12) {
+        return n + "nd";
+    } else if (i == 3 && j != 13) {
+        return n + "rd";
+    } else if (n == 0) {
+        return "0";
+    }
+    return n + "th";
+}
+
+// refactored
+
+function numberToOrdinal(n) {
+  var suffix = "th";
+  if (n == 0) suffix = "";
+  if (n % 10 == 1 && n % 100 != 11) suffix = "st";
+  if (n % 10 == 2 && n % 100 != 12) suffix = "nd";
+  if (n % 10 == 3 && n % 100 != 13) suffix = "rd";
+  return n + suffix;
+}
