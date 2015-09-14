@@ -186,3 +186,19 @@ function numberToOrdinal(n) {
   if (n % 10 == 3 && n % 100 != 13) suffix = "rd";
   return n + suffix;
 }
+
+// remove duplicates from array with two arrays as arguments
+
+function array_diff(a, b) {
+  var arr1 = a;
+  var arr2 = b;
+  return arr1.filter(function(elem){
+      return arr2.indexOf(elem) == -1;
+  })
+}
+
+// refactored
+
+function array_diff(a, b) {
+  return a.filter(function(elem) { return b.indexOf(elem) == -1; });
+}
