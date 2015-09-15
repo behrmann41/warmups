@@ -135,23 +135,23 @@
   //   return parens === 0;
   // }
 //solution using iteration
-  function parensChecker(string){
-    var depth = 0;
-    for(var i in string){
-        if(string[i] == '('){
-            depth ++;
-        } else if(string[i] == ')') {
-            depth --;
-        }
-        if (depth < 0) return false;
-    }
-    if(depth > 0) return false;
-    return true;
-}
+//   function parensChecker(string){
+//     var depth = 0;
+//     for(var i in string){
+//         if(string[i] == '('){
+//             depth ++;
+//         } else if(string[i] == ')') {
+//             depth --;
+//         }
+//         if (depth < 0) return false;
+//     }
+//     if(depth > 0) return false;
+//     return true;
+// }
 
-  console.log("true ->  " + parensChecker("()(((())))")) //=> true
-  console.log("false -> " + parensChecker("())))(")) //=> false
-  console.log("false -> " + parensChecker(")(")) //=> false
+//   console.log("true ->  " + parensChecker("()(((())))")) //=> true
+//   console.log("false -> " + parensChecker("())))(")) //=> false
+//   console.log("false -> " + parensChecker(")(")) //=> false
 
 
   
