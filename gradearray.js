@@ -45,3 +45,23 @@ function convertToGradeObjectForIn(arr){
   }
   return output;
 }
+
+// object solution using 100 as max:
+
+scoresObject = {
+    "A": [100, 90],
+    "B": [89, 80],
+    "C": [79, 70],
+    "D": [69, 60],
+    "F": [59, 0]
+}
+
+function scoresToGrades(scores) {
+    return scores.map(function(elem) {
+        for (prop in scoresObject) {
+            if (elem <= scoresObject[prop][0] && elem >= scoresObject[prop][1]) {
+                return prop;
+            }
+        }
+    })
+}
