@@ -225,3 +225,31 @@ chained([f1,f2,f3])(2) // -> 36
 chained([f3,f2,f1])(2) // -> 12
 
 chained([f4,f5,f6])("lorem ipsum") // -> "merol_muspi"
+
+// rotate array
+
+function rotate(array,n){
+  var arr = array;
+  if (n >= 0){
+    var i = 0;
+    while (i < n){
+        i++;
+        var temp = arr.pop();
+        arr.unshift(temp);
+    }
+  } else {
+    var j = 0;
+    while (j > n){
+        j--;
+        var temp2 = arr.shift();
+        arr.push(temp2);
+    }
+  }
+  return arr;
+}
+
+// refactored
+function rotate (array, n) {
+  n = (array.length - n) % array.length;
+  return array.slice(n).concat(array.slice(0, n));
+}
