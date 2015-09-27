@@ -253,3 +253,28 @@ function rotate (array, n) {
   n = (array.length - n) % array.length;
   return array.slice(n).concat(array.slice(0, n));
 }
+
+//good vs evil problem
+
+function goodVsEvil(good, evil){
+  var goodCount = 0;
+  var evilCount = 0;
+  var gSplit = good.split(' ');
+  var eSplit = evil.split(' ');
+
+  for (var i = 0; i < gSplit.length; i++){
+    goodCount += +gSplit[i];
+  }
+
+  for (var j = 0; j < eSplit.length; j++){
+    evilCount += +eSplit[j];
+  }
+  if (goodCount < evilCount){
+      return 'Battle Result: Evil eradicates all trace of Good'
+  } else if (goodCount == evilCount){
+      return 'Battle Result: No victor on this battle field'
+  } else {
+      return 'Battle Result: Good triumphs over Evil'
+  }
+}
+
