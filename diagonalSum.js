@@ -17,5 +17,5 @@ function diagonalSum(array){
    }
    return count;
 }
-              
+
 diagonalSum(exampleArray) // => 4
