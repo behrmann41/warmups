@@ -278,3 +278,15 @@ function goodVsEvil(good, evil){
   }
 }
 
+// is string balanced with brackets
+function isBalanced(string){
+  var count = 0;
+  for(var i = 0; i < string.length; i++) {
+    if (string[i] === '(') count ++;
+    if (string[i] === ')') count --;
+    if (count < 0) return false;
+  }
+
+  return count === 0;
+}
+
