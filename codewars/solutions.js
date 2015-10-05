@@ -290,3 +290,23 @@ function isBalanced(string){
   return count === 0;
 }
 
+
+// liftoff exercise
+
+function liftoff(instructions){
+  for(var i = 0; i < instructions.length; i++){
+    for(var j = 0; j < instructions.length; j++){
+      if(instructions[i] > instructions[j]){
+        var temp = instructions[j];
+        instructions[j] = instructions[i];
+        instructions[i] = temp;
+      }
+    }
+  }
+  return instructions.join(' ') + " liftoff!";
+}
+
+// refacored
+function liftoff(instructions){
+  return instructions.sort(function(a, b) {return b - a;}).join(' ') + ' liftoff!'
+}
