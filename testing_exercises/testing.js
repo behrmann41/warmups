@@ -18,5 +18,15 @@ module.exports = {
     });
 
     return highestProduct;
+  },
+
+  captializeSecondWord: function (arr){
+    var output = []
+    for (var i = 0; i < arr.length; i++){
+      output.push(arr[i].replace(/\w\S*/g, function(txt){
+        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+      }))
+    }
+    return output;
   }
 }
