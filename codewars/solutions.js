@@ -310,3 +310,23 @@ function liftoff(instructions){
 function liftoff(instructions){
   return instructions.sort(function(a, b) {return b - a;}).join(' ') + ' liftoff!'
 }
+
+// squeaky clean
+
+function squeakyClean(arr) {
+  var output = [];
+  var storage = [];
+  for (var i = 0; i < arr.length;i++){
+    if (!arr[i]){
+      storage.push(arr[i])
+    }else {
+      output.push(arr[i])
+    }
+  }
+  return output
+}
+
+//refactored
+function squeakyClean(arr) {
+  return arr.filter(function(elem) { return elem });
+}
