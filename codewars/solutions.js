@@ -330,3 +330,9 @@ function squeakyClean(arr) {
 function squeakyClean(arr) {
   return arr.filter(function(elem) { return elem });
 }
+
+//manual ParseInt
+
+function myParseInt(str) {
+  return /^\s*\d+\s*$/.test(str) ? +str : NaN;
+}
