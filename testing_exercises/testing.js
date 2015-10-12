@@ -28,5 +28,46 @@ module.exports = {
       }))
     }
     return output;
+  },
+
+  backronym: function (str) {
+    var words = {"A": "April",
+                 "B": "Building",
+                 "C": "Caller",
+                 "D": 'District',
+                 "E": 'Evening',
+                 "F": 'Foot',
+                 "G": 'Grapple',
+                 "H": 'High',
+                 "I": "Igloo",
+                 "J": "Jump",
+                 "K": "Keep",
+                 "L": "Lawn",
+                 "M": "Mountain",
+                 "N": "Newbie",
+                 "O": "Orphan",
+                 "P": "Pool",
+                 "Q": "Quip",
+                 "R": "Ranch",
+                 "S": "Sandwich",
+                 "T": "Toothbrush",
+                 "U": "Up",
+                 "V": "Vector",
+                 "W": "Wind",
+                 "X": "X-Ray",
+                 "Y": "Yellow",
+                 "Z": "Zebra"
+                }
+
+    var output = [];
+    var input = str.split('');
+    for (var i = 0; i < input.length; i++){
+        for (var prop in words){
+            if (input[i] == prop){
+                output.push(words[prop])
+            }
+        }
+    }
+    return output.join(' ');
   }
 }

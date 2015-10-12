@@ -14,6 +14,12 @@ describe('capitalizeArr', function (){
   })
 })
 
+describe('backronym', function (){
+  it('takes a string of letters and outputs a word for each', function (){
+    expect(code.backronym('ABCD')).toEqual('April Building Caller District');
+  })
+})
+
 var code2 = require('../nestedArray.js');
 
 describe('nestedArray', function (){
