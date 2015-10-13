@@ -39,3 +39,12 @@ describe('nestedArray', function (){
                                         })
   })
 })
+
+var code3 = require('../toDecimal.js');
+
+describe('toDecimal', function (){
+  it('returns a binary number into a decimal value', function (){
+    expect(code3.toDecimal(1100)).toEqual(12)
+    expect(code3.toDecimal(1)).toEqual(1)
+  })
+})
