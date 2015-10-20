@@ -1,27 +1,48 @@
-var Car = require('../car.js')
-var car
+var Car = require('../car');
 
-describe('car', function(){
+describe('Car', function() {
+  it("charges the car", function() {
+    var car = new Car();
+    expect(car.battery).toEqual(0);
 
-  beforeEach(function(){
-    //car has two arguments, total miles and once charged miles remaining goes to 100.  Starts off at 0 by default
-    car = new Car(0,0)
-  })
+    car.charge(5);
+    expect(car.battery).toEqual(10);
 
-  describe('charged', function(){
-    it('car should start off as not charged', function(){
-      expect(car.charged).toEqual(false)
-      car.charge()
-      expect(car.charged).toEqual(true)
-      expect(car.milesRemaining).toEqual(100)
-    })
-  })
+    car.charge(6);
+    expect(car.battery).toEqual(22);
+  });
 
-  describe('driveCar', function(){
-    it('takes the miles you would like to drive the car', function(){
-      expect(car.driveCar(25)).toEqual('Car needs to be charged before driving')
-      car.charge()
-      expect(car.driveCar(25)).toEqual(car.totalMiles )
-    })
-  })
-})
+  it("uses battery when driving", function() {
+    var car = new Car();
+    car.charge(10);
+    expect(car.battery).toEqual(20);
+
+    car.drive(10);
+    expect(car.battery).toEqual(10);
+  });
+
+  it("can run out of battery life", function() {
+    var car = new Car(10);
+    car.charge(10);
+    expect(car.battery).toEqual(20);
+    car.drive(20);
+    expect(car.battery).toEqual(0);
+
+    expect(car.drive(10)).toEqual('Out of battery.')
+  });
+
+  it("has a bug in the software", function() {
+    var car = new Car(420);
+    expect(car.drive(400)).toEqual('EE GOO KUR GURT');
+    expect(car.battery).toEqual(0);
+  });
+
+  it("increments the odometer when driving", function() {
+    var car = new Car(10);
+    expect(car.odometer()).toEqual(0);
+    car.drive(50);
+    expect(car.odometer()).toEqual(50);
+    car.drive(25);
+    expect(car.odometer()).toEqual(75);
+  });
+});
