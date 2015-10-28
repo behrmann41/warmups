@@ -80,7 +80,7 @@
 //solution 2
 var fs = require('fs')
 var text = fs.readFileSync('words.txt').toString().split('\n')
-var letters = 'wiorh'.split('')
+var letters = 'a'.split('')
 
 var longest = text.filter(function(word){
   return word.split('').every(function(letter){
@@ -90,5 +90,5 @@ var longest = text.filter(function(word){
   return curr.length > next.length ? curr : next;
 }) 
 
-console.log(longest)
+// console.log(longest)
 
