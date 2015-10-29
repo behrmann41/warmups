@@ -3,13 +3,18 @@ extends ../layout
 block content
   h1= title
   section
+    h2 WereSquirrel Info
     for weresquirrel in weresquirrels
-      h2= weresquirrel.name
+      h3= weresquirrel.name
       section
         for duel in weresquirrel.duels
-          h3 Garlic Total
+          h4 Garlic Total
           p= duel.garlic
-          h3 Meat Total
+          h4 Meat Total
           p= duel.meat
+  section
+    h2 Unibear Info
+    for unibear in unibears
+      h4= unibear.name
   section
     a(href='/colonies') List of Colonies

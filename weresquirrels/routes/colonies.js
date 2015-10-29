@@ -33,7 +33,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/:id', function (req,res,next){
-  var result = {}
+  var result = {};
 
   Colonies.findById(req.params.id).then(function (colony){
     return WeresquirrelAgreements.find({colonyId: colony._id}).then(function (weresquirrels){
@@ -65,15 +65,40 @@ router.get('/:id', function (req,res,next){
         })
       })
       result["weresquirrelData"] = weresquirrelData
+      result['unibears'] = []
       return result
     })
     .then(function (result){
-      
+      Colonies.findById(req.params.id).then(function (colony){
+        return UnibearAgreements.find({colonyId: colony._id}).then(function (agreements){
+          return agreements
+        })
+      })
+      .then(function (agreements){
+        return agreements.map(function (unibears){
+          return unibears.unibearId
+        })
+      })
+      .then(function (unibearsIds){
+        return Unibears.find({_id: {$in: unibearsIds }}).then(function (unibears){
+          return unibears
+        })
+      })
+      .then(function (unibears){
+        unibears.forEach(function (unibear){
+          result.unibears.push({name: unibear.name})
+        })
+        return result
+      })
+      .then(function (result){
+        res.render('colonies/show', { title: 'Colony Information',
+                                      weresquirrels: result.weresquirrelData,
+                                      unibears: result.unibears  })
+      })
     })
   })
 })
 module.exports = router;
 
-// res.render('colonies/show', { title: 'Colony Information', weresquirrels: weresquirrelInfo })
 
 
