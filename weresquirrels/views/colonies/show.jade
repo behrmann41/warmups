@@ -1,0 +1,15 @@
+extends ../layout
+
+block content
+  h1= title
+  section
+    for weresquirrel in weresquirrels
+      h2= weresquirrel.name
+      section
+        for duel in weresquirrel.duels
+          h3 Garlic Total
+          p= duel.garlic
+          h3 Meat Total
+          p= duel.meat
+  section
+    a(href='/colonies') List of Colonies

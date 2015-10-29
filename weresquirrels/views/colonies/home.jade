@@ -1,0 +1,9 @@
+extends ../layout
+
+block content
+  h1= title
+  for colony in allColonies
+    p= colony.name
+    p Duels Won: #{colony.duelsWon.length}
+    p
+      a(href='/colonies/' + colony._id) See Colony

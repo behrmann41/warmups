@@ -82,10 +82,10 @@ var duel6id = Duels.id();
 Promise.all([
   Colonies.remove().then(function () {
     return Promise.all([
-      Colonies.insert({_id: colony1id}),
-      Colonies.insert({_id: colony2id}),
-      Colonies.insert({_id: colony3id}),
-      Colonies.insert({_id: colony4id}),
+      Colonies.insert({_id: colony1id, name: "House Mario"}),
+      Colonies.insert({_id: colony2id, name: "House Luigi"}),
+      Colonies.insert({_id: colony3id, name: "House Peach"}),
+      Colonies.insert({_id: colony4id, name: "House Toad"}),
     ]);
   }),
   Unibears.remove().then(function () {
