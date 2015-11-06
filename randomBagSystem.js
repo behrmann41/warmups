@@ -11,3 +11,18 @@ function tetrominos(count) {
 }
 
 tetrominos(50)
+
+// working on second solution
+
+function tetrominos (input){
+  var max = input.length,
+      result = [],
+      index;
+
+  for (var i = 0; i < max; i++) {
+    index = Math.floor(Math.random() * input.length)
+    result[i] = input[index]
+    input.splice(index, 1)
+  };
+  return result
+}
