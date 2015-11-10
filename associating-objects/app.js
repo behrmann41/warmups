@@ -55,6 +55,7 @@ sortCustomers(customers)
 //     { id: 5, customerId: 4, date: '1/24/2014' }
 //   ]
 // }
+//solution 2 var 1
 
 function sortOrders (array){
   return array.reduce(function(result, object){
@@ -62,6 +63,16 @@ function sortOrders (array){
     result[object.customerId].push(object)
     return result
   },{})
+}
+
+//solution 2 var 2 (iterates twice)
+function group(array) {
+  return array.reduce(function (result, order) {
+    result[order.customerId] = orders.filter(function (request) {
+      return request.customerId == order.customerId;
+    });
+    return result;
+  }, {});
 }
 
 sortOrders(orders)
@@ -100,3 +111,18 @@ sortOrders(orders)
 //     "customer": {"id": 2, "name": "Taurean"}
 //   }
 // ]
+
+function specificZipJoin(array1, array2) {
+ function go(array1, array2, collectorArray) {
+   if (array1.length == 0) { return collectorArray; }
+
+   array1[0].customer = array2[array1[0].customerId];
+   delete array1[0].customerId;
+   collectorArray.push(array1[0]);
+
+   return go(array1.slice(1), array2, collectorArray);
+ }
+ return go(array1, array2, []);
+}
+console.log('------------------------------------');
+console.log(specificZipJoin(orders, customers));
