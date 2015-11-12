@@ -126,3 +126,33 @@ function specificZipJoin(array1, array2) {
 }
 console.log('------------------------------------');
 console.log(specificZipJoin(orders, customers));
+
+Take an array like the following:
+
+var input = [
+  {kidId: 1, kidName: 'Ed', toyName: 'Teddy Bear'},
+  {kidId: 1, kidName: 'Ed', toyName: 'Car'},
+  {kidId: 2, kidName: 'Su', toyName: 'Teddy Bear'},
+]
+// And return an array like this:
+//
+// [
+//   {kidId: 1, kidName: 'Ed', toys: ['Teddy Bear', 'Car']},
+//   {kidId: 2, kidName: 'Su', toys: ['Teddy Bear']},
+// ]
+// That is, remove duplicates based on the kidId, and map the toyNames into an array.
+
+function groupedToys(input) {
+  var uniqueIds = [];
+  var result = [];
+  for(var i = 0; i < input.length; i ++) {
+    var index = uniqueIds.indexOf(input[i].kidId);
+    if(index >= 0) {
+      result[index].toys.push(input[i].toyName);
+    } else {
+      uniqueIds.push(input[i].kidId);
+      result.push({kidId: input[i].kidId, kidName: input[i].kidName, toys: [input[i].toyName]})
+    }
+  }
+  return result;
+}
