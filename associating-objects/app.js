@@ -141,7 +141,7 @@ var input = [
 //   {kidId: 2, kidName: 'Su', toys: ['Teddy Bear']},
 // ]
 // That is, remove duplicates based on the kidId, and map the toyNames into an array.
-
+//solution 1 - pure
 function groupedToys(input) {
   var uniqueIds = [];
   var result = [];
@@ -156,3 +156,25 @@ function groupedToys(input) {
   }
   return result;
 }
+//solution 2 - mutates
+function dataParser(array){
+  var output = []
+
+  array.reduce(function(prev,next){
+    if(!prev[next.kidId]){
+      next.toys = []
+      next.toys.push(next.toyName)
+      delete next.toyName
+      prev[next.kidId] = next
+      output.push(next)
+    }
+    else{
+      prev[next.kidId].toys.push(next.toyName)
+    }
+    return prev
+  },{})
+
+  console.log(output)
+}
+
+dataParser(joinedData)
