@@ -8,6 +8,7 @@ public class TimeTest {
   private int itemsInArray = 0;
   static long startTime;
   static long endTime;
+
   public void generateRandomArray(){
     for (int i = 0; i < arraySize ; i++ ) {
       theArray[i] = (int) (Math.random() * 1000) + 10;
